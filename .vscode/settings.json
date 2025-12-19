@@ -1,0 +1,14 @@
+{
+    // --- File associations ---
+    // Force .lua files to be treated as Luau
+    "files.associations": {
+        "*.lua": "luau"
+    },
+
+    // --- StyLua ---
+    "stylua.targetReleaseVersion": "latest",
+
+    // --- Luau Language Server ---
+    "luau-lsp.platform.type": "roblox",
+    "luau-lsp.require.mode": "relative"
+}

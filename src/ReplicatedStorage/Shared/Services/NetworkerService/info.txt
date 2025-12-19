@@ -1,0 +1,1 @@
+SUPER IMPORTANT: in the same folder where this file lives, a remote event must exist on the Roblox side named STCRegisterEvent - create that and you're good to go
