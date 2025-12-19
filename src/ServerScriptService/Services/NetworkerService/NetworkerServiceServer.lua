@@ -41,7 +41,8 @@ local defaultClientRateLimit = 50
 -- Initialize the service. Run once
 function NetworkerServiceServer.init(self: NetworkerServiceServer)
 	-- Create the main folder to store all created remote events
-	local folder = Instance.new("Folder", eventFolderPath)
+	local folder = Instance.new("Folder")
+	folder.Parent = eventFolderPath
 	folder.Name = eventFolderName
 
 	-- Hold a registry of all namespaces and their events
@@ -49,8 +50,8 @@ function NetworkerServiceServer.init(self: NetworkerServiceServer)
 
 	-- For each event, remove the player key (if it exists) for firing log and allowed players
 	Players.PlayerRemoving:Connect(function(player)
-		for i, namespace in pairs(self.__registry) do
-			for t, event in pairs(namespace) do
+		for _, namespace in pairs(self.__registry) do
+			for _, event in pairs(namespace) do
 				local fireLog = event.playerFireLog
 				local allowedLog = event.allowedPlayers
 				local foundPlayerIdx = fireLog[player]
@@ -120,13 +121,13 @@ function NetworkerServiceServer.FireAllClientsExcept(
 
 	-- Convert excludedPlayers to a "set" for constant time lookups instead of table.find linear search
 	local excluded = {}
-	for i, player in ipairs(excludedPlayers) do
+	for _, player in ipairs(excludedPlayers) do
 		excluded[player] = true
 	end
 
 	-- Fire to each player as long as they dont exist in excludedPlayers
 	local event = self.__registry[namespace][eventName].instance
-	for i, player in ipairs(Players:GetPlayers()) do
+	for _, player in ipairs(Players:GetPlayers()) do
 		if not excluded[player] then
 			event:FireClient(player, ...)
 		end
