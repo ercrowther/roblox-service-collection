@@ -5,8 +5,10 @@ the term "service" here is kind of a loose term, as it can mean frameworks, engi
 feel free to use any of the scripts here, and if you think you can contribute some improvements to any existing service, don't be afraid to put in a pull request!  
 
 ## current services/modules
-- a networker  
-- an asset preloader  
+| Service Name     | Description                                                                              | Associated Files |
+|------------------|------------------------------------------------------------------------------------------|------------------|
+| Networker        | Networking for client and server communication. Abstracts remote events into an easy API, has rate limiting, instance name obfuscation, and more. Read comment headers in files for more info | `src/ReplicatedStorage/Shared/Services/NetworkerService`, `src/ServerScriptService/Services/NetworkerService` |
+| Asset Preloader  | Preloads assets from directories within the game - including subdirectories | `src/ServerScriptService/Services/AssetPreloaderServiceServer.lua` |
 
 
 PS: hopefully all of these services contain a header comment in their files which explains what they do and an example use case; before using one of these, you should probably read it's header comment. additionally, if it's needed, a text file will accompany the service in either server or client folder that explains further steps for adding it to a game  
